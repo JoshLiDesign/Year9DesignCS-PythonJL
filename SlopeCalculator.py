@@ -14,7 +14,14 @@ y2 = int(y2);
 #Process
 rise = x2 - x1
 run = y2 - y1;
+fSlope = rise/run;
+
+#String stores chars
+#int stores integer values
+#floats tores real numbers
 
 #Output
 print(rise)
 print(run)
+print("your slope is m = "+str(rise)+"/"+str(run))
+print("your slope as a decimal is "+str(rise/run))
