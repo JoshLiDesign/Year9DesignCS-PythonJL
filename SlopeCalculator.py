@@ -26,5 +26,5 @@ fSlope = rise/run;
 #Output
 print(rise)
 print(run)
-os.system("say your slope is m = "+str(rise)+"/"+str(run))
+os.system("say your slope is "+str(rise)+"/"+str(run))
 print("your slope as a decimal is "+str(rise/run))
