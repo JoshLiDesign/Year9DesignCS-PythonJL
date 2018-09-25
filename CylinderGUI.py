@@ -1,5 +1,8 @@
 import tkinter as tk
-print("This program calculates the volume of a cylinder given radius and height")
+
+def submit():
+	r = float(entr.get())
+	h = float(enth.get())
 
 root = tk.Tk()
 root.title("Volume of a cylinder")
@@ -16,7 +19,7 @@ labh.pack()
 enth = tk.Entry(root)
 enth.pack()
 
-btn = tk.Button(root, text="submit")
+btn = tk.Button(root, text="submit", command = submit)
 btn.pack()
 
 output = tk.Text(root, width = 50, height = 10, borderwidth = 3, relief = tk.GROOVE)
