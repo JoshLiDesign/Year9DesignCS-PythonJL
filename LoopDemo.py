@@ -52,9 +52,14 @@ for i in range(101, -1, -1):
 
 s = "Fish food"
 
+print("*********************************")
 
 for i in range(0, len(s), 1):
 	print(s[i])
 
+print("*********************************")
+
+for i in range(0, len(s), 2):
+	print(s[i])
 for i in range(len(s)-1, -1, -1):
 	print(s[i])
