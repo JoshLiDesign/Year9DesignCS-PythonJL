@@ -2,14 +2,15 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("Invest-o-Easy")
+root.configure(background="#F6F6F6")
 
-#****************************STOCK NAMES*******************************
+#****************************input stock labels*******************************
 
 def changeStock(*args):
 	print(varName.get())
 
-lablName = tk.Label(root, text = "Stock Name", font = 16)
-lablName.grid(row = 0, column = 0, columnspan = 2)
+lablName = tk.Label(root, text = "Stock Name", font = 16, background = "#CAD5E2", foreground = "white")
+lablName.grid(row = 0, column = 0, columnspan = 2, sticky = "NESW")
 
 stockNames = [
 "Select",
@@ -28,8 +29,8 @@ dropDownMenustocks.grid(row = 0, column = 2, columnspan = 2)
 
 #****************************Enter Dates*******************************
 
-lablStart = tk.Label(root, text = "Start Date", font = 16)
-lablStart.grid(row = 1, column = 0, columnspan = 2)
+lablStart = tk.Label(root, text = "Start Date", font = 16, background = "#CAD5E2", foreground = "white", borderwidth = 2)
+lablStart.grid(row = 1, column = 0, columnspan = 2, sticky = "NESW")
 
 
 def on_entry_click_start(event):
@@ -42,15 +43,15 @@ def on_focusout_start(event):
         entStart.insert(0, 'YY/MM/DD')
         entStart.config(fg = 'grey')
 
-entStart = tk.Entry(root, bd = 3)
+entStart = tk.Entry(root, bd = 3, background = "#FFFFFF")
 entStart.insert(0, 'YY/MM/DD')
 entStart.bind('<FocusIn>', on_entry_click_start)
 entStart.bind('<FocusOut>', on_focusout_start)
 entStart.config(fg = 'grey')
-entStart.grid(row = 1, column = 2)
+entStart.grid(row = 1, column = 2, sticky = "NESW")
 
-lablEnd = tk.Label(root, text = "End Date", font = 16)
-lablEnd.grid(row = 1, column = 3, columnspan = 2)
+lablEnd = tk.Label(root, text = "End Date", font = 16, background = "#CAD5E2", foreground = "white", borderwidth = 2)
+lablEnd.grid(row = 1, column = 3, columnspan = 2, sticky = "NESW")
 
 def on_entry_click_end(event):
     if entEnd.get() == 'YY/MM/DD':
@@ -62,20 +63,20 @@ def on_focusout_end(event):
         entEnd.insert(0, 'YY/MM/DD')
         entEnd.config(fg = 'grey')
 
-entEnd = tk.Entry(root, bd = 3)
+entEnd = tk.Entry(root, bd = 3, background = "#FFFFFF")
 entEnd.insert(0, 'YY/MM/DD')
 entEnd.bind('<FocusIn>', on_entry_click_end)
 entEnd.bind('<FocusOut>', on_focusout_end)
 entEnd.config(fg = 'grey')
-entEnd.grid(row = 1, column = 5)
+entEnd.grid(row = 1, column = 5, sticky = "NESW")
 
-#****************************Functions******************************
+#****************************Input Functions******************************
 
 def changeFunc(*args):
 	print(varFunc.get())
 
-lablFunc = tk.Label(root, text = "Functions", font = 16)
-lablFunc.grid(row = 2, column = 0, columnspan = 2)
+lablFunc = tk.Label(root, text = "Functions", font = 16, background = "#CAD5E2", foreground = "white")
+lablFunc.grid(row = 2, column = 0, columnspan = 2, sticky = "NESW")
 
 stockFunc = [
 "Select",
@@ -96,8 +97,8 @@ dropDownMenufunc.grid(row = 2, column = 2, columnspan = 2)
 def runColour(*args):
 	print("running colour contrast")
 
-btnColour = tk.Button(root, text="Colour Contrast", command = runColour)
-btnColour.grid(row = 3, column = 5)
+btnColour = tk.Button(root, text="Colour Contrast", command = runColour, background = "white")
+btnColour.grid(row = 3, column = 5, pady = 10)
 
 def runFont(*args):
 	print("running enlarged fonts")
