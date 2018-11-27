@@ -2,14 +2,14 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("Invest-o-Easy")
-root.configure(background="#F6F6F6")
+root.configure(background="#90AFC5")
 
-#****************************input stock labels*******************************
+#****************************Stock Index*******************************
 
 def changeStock(*args):
 	print(varName.get())
 
-lablName = tk.Label(root, text = "Stock Name", font = 16, background = "#CAD5E2", foreground = "white")
+lablName = tk.Label(root, text = "Stock Name", background = "#336B87", foreground = "white", height = 2)
 lablName.grid(row = 0, column = 0, columnspan = 2, sticky = "NESW")
 
 stockNames = [
@@ -27,10 +27,10 @@ varName.trace("w", changeStock)
 dropDownMenustocks = tk.OptionMenu(root, varName, stockNames[0], stockNames[1], stockNames[2], stockNames[3])
 dropDownMenustocks.grid(row = 0, column = 2, columnspan = 2)
 
-#****************************Enter Dates*******************************
+#*****************************Dates*******************************
 
-lablStart = tk.Label(root, text = "Start Date", font = 16, background = "#CAD5E2", foreground = "white", borderwidth = 2)
-lablStart.grid(row = 1, column = 0, columnspan = 2, sticky = "NESW")
+lablStart = tk.Label(root, text = "Start Date", background = "#336B87", foreground = "white", height = 2)
+lablStart.grid(row = 1, column = 0, columnspan = 2, sticky = "NESW", pady = 1)
 
 
 def on_entry_click_start(event):
@@ -43,14 +43,14 @@ def on_focusout_start(event):
         entStart.insert(0, 'YY/MM/DD')
         entStart.config(fg = 'grey')
 
-entStart = tk.Entry(root, bd = 3, background = "#FFFFFF")
+entStart = tk.Entry(root, bd = 3)
 entStart.insert(0, 'YY/MM/DD')
 entStart.bind('<FocusIn>', on_entry_click_start)
 entStart.bind('<FocusOut>', on_focusout_start)
 entStart.config(fg = 'grey')
-entStart.grid(row = 1, column = 2, sticky = "NESW")
+entStart.grid(row = 1, column = 2, sticky = "NESW", padx = 2)
 
-lablEnd = tk.Label(root, text = "End Date", font = 16, background = "#CAD5E2", foreground = "white", borderwidth = 2)
+lablEnd = tk.Label(root, text = "End Date",  background = "#336B87", foreground = "white", height = 2)
 lablEnd.grid(row = 1, column = 3, columnspan = 2, sticky = "NESW")
 
 def on_entry_click_end(event):
@@ -63,19 +63,19 @@ def on_focusout_end(event):
         entEnd.insert(0, 'YY/MM/DD')
         entEnd.config(fg = 'grey')
 
-entEnd = tk.Entry(root, bd = 3, background = "#FFFFFF")
+entEnd = tk.Entry(root, bd = 3)
 entEnd.insert(0, 'YY/MM/DD')
 entEnd.bind('<FocusIn>', on_entry_click_end)
 entEnd.bind('<FocusOut>', on_focusout_end)
 entEnd.config(fg = 'grey')
 entEnd.grid(row = 1, column = 5, sticky = "NESW")
 
-#****************************Input Functions******************************
+#*****************************Functions******************************
 
 def changeFunc(*args):
 	print(varFunc.get())
 
-lablFunc = tk.Label(root, text = "Functions", font = 16, background = "#CAD5E2", foreground = "white")
+lablFunc = tk.Label(root, text = "Functions", background = "#336B87", foreground = "white", height = 2)
 lablFunc.grid(row = 2, column = 0, columnspan = 2, sticky = "NESW")
 
 stockFunc = [
@@ -92,29 +92,34 @@ varFunc.trace("w", changeFunc)
 dropDownMenufunc = tk.OptionMenu(root, varFunc, stockFunc[0], stockFunc[1], stockFunc[2], stockFunc[3])
 dropDownMenufunc.grid(row = 2, column = 2, columnspan = 2)
 
-#****************************Accessibility Options******************************
+#****************************Accessibility Options*****************************
 
 def runColour(*args):
 	print("running colour contrast")
 
-btnColour = tk.Button(root, text="Colour Contrast", command = runColour, background = "white")
-btnColour.grid(row = 3, column = 5, pady = 10)
+lablColour = tk.Label(root, text = "Colour Contrast", width = 12, background = "#363A4C", relief = tk.GROOVE, foreground = "white", borderwidth = 1)
+lablColour.grid(row = 3, column = 5, sticky = "NSE")
+lablColour.bind("<Button-1>", runColour)
 
 def runFont(*args):
 	print("running enlarged fonts")
 
-btnFont = tk.Button(root, text="Enlarged Fonts", command = runColour)
-btnFont.grid(row = 4, column = 5)
+lablColour = tk.Label(root, text = "Enlarged  Fonts", width = 12, background = "#363A4C", relief = tk.GROOVE, foreground = "white", borderwidth = 1)
+lablColour.grid(row = 4, column = 5, sticky = "NSE")
+lablColour.bind("<Button-1>", runFont)
 
-#****************************Execute Program******************************
+#*****************************Execution Catalyst******************************
 
 def runExe(*args):
 	print("running program")
 
-btnExec = tk.Button(root, text="Run", command = runExe)
-btnExec.grid(row = 5, column = 1, columnspan = 5)
+root.bind('<Return>', runExe)
 
-#****************************Output Textbox******************************
+lablExec = tk.Label(root, text = "run", font = 40, background = "#363A4C", width = 8, foreground = "white", borderwidth = 2)
+lablExec.grid(row = 5, column = 3, sticky = "NESW", pady = 2)
+lablExec.bind("<Button-1>", runExe)
+
+#********************************Output Box*************************************
 
 textbox = tk.Text(root, height = 10, width = 50, borderwidth = 3, relief = tk.GROOVE)
 
