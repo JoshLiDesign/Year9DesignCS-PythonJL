@@ -1,10 +1,13 @@
 import tkinter as tk
+import subprocess
+import threading
+
 
 root = tk.Tk()
 root.title("Invest-o-Easy")
 root.configure(background="#90AFC5")
 
-#****************************Stock Index*******************************
+#****************************Stock Labels*******************************
 
 def changeStock(*args):
 	print(varName.get())
@@ -27,7 +30,7 @@ varName.trace("w", changeStock)
 dropDownMenustocks = tk.OptionMenu(root, varName, stockNames[0], stockNames[1], stockNames[2], stockNames[3])
 dropDownMenustocks.grid(row = 0, column = 2, columnspan = 2)
 
-#*****************************Dates*******************************
+#*****************************Date Extraction*******************************
 
 lablStart = tk.Label(root, text = "Start Date", background = "#336B87", foreground = "white", height = 2)
 lablStart.grid(row = 1, column = 0, columnspan = 2, sticky = "NESW", pady = 1)
@@ -80,9 +83,9 @@ lablFunc.grid(row = 2, column = 0, columnspan = 2, sticky = "NESW")
 
 stockFunc = [
 "Select",
-"Find highest opening/closing rate",
-"Find lowest opening/closing rate",
-"Find fluctuation",
+"Compute Average Stock Price",
+"Find Highest & Lowest Rate",
+"Calculate Fluctuations",
 ]
 
 varFunc = tk.StringVar(root)
@@ -96,17 +99,36 @@ dropDownMenufunc.grid(row = 2, column = 2, columnspan = 2)
 
 def runColour(*args):
 	print("running colour contrast")
+  #(background="#FFF2C6")
 
-lablColour = tk.Label(root, text = "Colour Contrast", width = 12, background = "#363A4C", relief = tk.GROOVE, foreground = "white", borderwidth = 1)
+lablColour = tk.Label(root, text = "Colour Contrast", width = 12, background = "#363A4C", relief = tk.GROOVE, foreground = "white", borderwidth = 1, height = 1)
 lablColour.grid(row = 3, column = 5, sticky = "NSE")
 lablColour.bind("<Button-1>", runColour)
 
-def runFont(*args):
-	print("running enlarged fonts")
 
-lablColour = tk.Label(root, text = "Enlarged  Fonts", width = 12, background = "#363A4C", relief = tk.GROOVE, foreground = "white", borderwidth = 1)
-lablColour.grid(row = 4, column = 5, sticky = "NSE")
-lablColour.bind("<Button-1>", runFont)
+def say(text):
+  subprocess.call(['say', text])
+
+print("The text-to-speech funtion is binded by pressing tab");
+
+def runSpeechprep(*args):
+    t = threading.Thread(target=runSpeech)
+    t.start()
+    
+def runSpeech(*args):
+  print("running text-to-speech")
+  say("This program, Invest-o-Easy, carries out functions on pre-selected stocks by extracting the daily opening and closing market value for those stocks in a set range of days.")
+  say("The creator thoroughly hopes that your gain interest and knowledge in programming because of this program.")
+  say("Here follows a text-to-speech instruction of all elements in this program")
+  say("Please select a stock label: Apple Inc, Coca-Cola Company and Facebook Inc")
+  say("Please select the start date and the end date in the format of YY slash MM slash DD")
+  say("Please select a desired function: compute the average price of stocks, find the highest and lowest rates or calculate fluctuations")
+
+root.bind('<Tab>', runSpeechprep)
+
+lablSpeech = tk.Label(root, text = "Text-to-Speech", width = 12, background = "#363A4C", relief = tk.GROOVE, foreground = "white", borderwidth = 1, height = 1)
+lablSpeech.grid(row = 4, column = 5, sticky = "NSE")
+lablSpeech.bind("<Button-1>", runSpeechprep)
 
 #*****************************Execution Catalyst******************************
 
