@@ -2,10 +2,9 @@ import tkinter as tk
 import subprocess
 import threading
 
-
 root = tk.Tk()
 root.title("Invest-o-Easy")
-root.configure(background="#90AFC5")
+root.configure(background = "#90AFC5")
 
 #****************************Stock Labels*******************************
 
@@ -19,7 +18,7 @@ stockNames = [
 "Select",
 "Apple Inc.",
 "Coca-Cola Company",
-"Facebook, Inc.",
+"Facebook Inc.",
 "Monster Beverage",
 ]
 
@@ -97,12 +96,35 @@ dropDownMenufunc.grid(row = 2, column = 2, columnspan = 2)
 
 #****************************Accessibility Options*****************************
 
+colourAt = 0;
+
 def runColour(*args):
-	print("running colour contrast")
-  #(background="#FFF2C6")
+  global colourAt
+  colourAt += 1;
+  print("running colour contrast")
+  if colourAt % 2 == 1:
+    root.configure(background = "#E2755D")
+    lablName.configure(background = "#A43820")
+    lablStart.configure(background = "#A43820")
+    lablEnd.configure(background = "#A43820")
+    lablFunc.configure(background = "#A43820")
+    lablColour.configure(background = "#46211A")
+    lablSpeech.configure(background = "#46211A")
+    lablExec.configure(background = "#46211A")
+  else:
+    root.configure(background = "#90AFC5")
+    lablName.configure(background = "#336B87")
+    lablStart.configure(background = "#336B87")
+    lablEnd.configure(background = "#336B87")
+    lablFunc.configure(background = "#336B87")
+    lablColour.configure(background = "#363A4C")
+    lablSpeech.configure(background = "#363A4C")
+    lablExec.configure(background = "#363A4C")
+
 
 lablColour = tk.Label(root, text = "Colour Contrast", width = 12, background = "#363A4C", relief = tk.GROOVE, foreground = "white", borderwidth = 1, height = 1)
 lablColour.grid(row = 3, column = 5, sticky = "NSE")
+
 lablColour.bind("<Button-1>", runColour)
 
 
@@ -112,17 +134,19 @@ def say(text):
 print("The text-to-speech funtion is binded by pressing tab");
 
 def runSpeechprep(*args):
-    t = threading.Thread(target=runSpeech)
-    t.start()
-    
+  t = threading.Thread(target=runSpeech)
+  t.start()
+
 def runSpeech(*args):
   print("running text-to-speech")
   say("This program, Invest-o-Easy, carries out functions on pre-selected stocks by extracting the daily opening and closing market value for those stocks in a set range of days.")
-  say("The creator thoroughly hopes that your gain interest and knowledge in programming because of this program.")
+  say("The creator thoroughly hopes that your gain interest and knowledge in investing by the end of your use of this program.")
   say("Here follows a text-to-speech instruction of all elements in this program")
-  say("Please select a stock label: Apple Inc, Coca-Cola Company and Facebook Inc")
-  say("Please select the start date and the end date in the format of YY slash MM slash DD")
-  say("Please select a desired function: compute the average price of stocks, find the highest and lowest rates or calculate fluctuations")
+  say("Select a stock label: Apple Inc, Coca-Cola Company and Facebook Inc")
+  say("Select the start date and the end date in the format of YY, slash MM, slash DD")
+  say("Select a desired function: compute the average price of stocks, find the highest and lowest rates or calculate fluctuations")
+  say("Click on colour contrast for a different colour scheme")
+  say("Press Run to execute this program")
 
 root.bind('<Tab>', runSpeechprep)
 
@@ -140,6 +164,12 @@ root.bind('<Return>', runExe)
 lablExec = tk.Label(root, text = "run", font = 40, background = "#363A4C", width = 8, foreground = "white", borderwidth = 2)
 lablExec.grid(row = 5, column = 3, sticky = "NESW", pady = 2)
 lablExec.bind("<Button-1>", runExe)
+
+#*******************************Data Processing & Calculatino***********************************
+
+temp = 
+
+file = open("Apple.txt","r")
 
 #********************************Output Box*************************************
 

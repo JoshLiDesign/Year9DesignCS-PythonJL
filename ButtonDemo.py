@@ -1,7 +1,7 @@
 import tkinter as tk
 
 def run():
-	print("it works")
+	print("button clicked")
 
 root = tk.Tk()
 root.title("ButtonDemo")
