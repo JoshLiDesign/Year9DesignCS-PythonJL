@@ -6,6 +6,7 @@ root = tk.Tk()
 root.title("Invest-o-Easy")
 root.configure(background = "#90AFC5")
 
+
 #****************************Stock Labels*******************************
 
 def changeStock(*args):
@@ -133,43 +134,56 @@ def say(text):
 
 print("The text-to-speech funtion is binded by pressing tab");
 
+at = 0
+
 def runSpeechprep(*args):
   t = threading.Thread(target=runSpeech)
   t.start()
 
 def runSpeech(*args):
-  print("running text-to-speech")
-  say("This program, Invest-o-Easy, carries out functions on pre-selected stocks by extracting the daily opening and closing market value for those stocks in a set range of days.")
-  say("The creator thoroughly hopes that your gain interest and knowledge in investing by the end of your use of this program.")
-  say("Here follows a text-to-speech instruction of all elements in this program")
-  say("Select a stock label: Apple Inc, Coca-Cola Company and Facebook Inc")
-  say("Select the start date and the end date in the format of YY, slash MM, slash DD")
-  say("Select a desired function: compute the average price of stocks, find the highest and lowest rates or calculate fluctuations")
-  say("Click on colour contrast for a different colour scheme")
-  say("Press Run to execute this program")
-
-root.bind('<Tab>', runSpeechprep)
+  global at
+  if at == 0:
+    at = 1
+    print("running text-to-speech")
+    lablSpeech.configure(state = "disabled")
+    say("This program, Invest-o-Easy, carries out functions on pre-selected stocks by extracting the daily opening and closing market value for those stocks in a set range of days.")
+    say("The creator thoroughly hopes that your gain interest and knowledge in investing by the end of your use of this program.")
+    say("Here follows a text-to-speech instruction of all elements in this program")
+    say("Select a stock label: Apple Inc, Coca-Cola Company and Facebook Inc")
+    say("Select the start date and the end date in the format of YY, slash MM, slash DD")
+    say("Select a desired function: compute the average price of stocks, find the highest and lowest rates or calculate fluctuations")
+    say("Click on colour contrast for a different colour scheme")
+    say("Press Run to execute this program")
+  at = 0
 
 lablSpeech = tk.Label(root, text = "Text-to-Speech", width = 12, background = "#363A4C", relief = tk.GROOVE, foreground = "white", borderwidth = 1, height = 1)
 lablSpeech.grid(row = 4, column = 5, sticky = "NSE")
 lablSpeech.bind("<Button-1>", runSpeechprep)
 
-#*****************************Execution Catalyst******************************
+#*******************************Data Processing & Calculatino***********************************
+
 
 def runExe(*args):
-	print("running program")
+  stocktemplist = varName.get().split()
+  stocktemp = stocktemplist[0]+".txt"
+  print(stocktemp)
+
+  file = open(stocktemp,"r")
+  data = file.read()
+  dataList = data.split()
+  dateList = [];
+  for i in range(len(dataList)):
+    dateList.append(dataList[i][:8])
+  print(dateList)
+  
+
+#*****************************Execution Catalyst******************************
 
 root.bind('<Return>', runExe)
 
 lablExec = tk.Label(root, text = "run", font = 40, background = "#363A4C", width = 8, foreground = "white", borderwidth = 2)
 lablExec.grid(row = 5, column = 3, sticky = "NESW", pady = 2)
 lablExec.bind("<Button-1>", runExe)
-
-#*******************************Data Processing & Calculatino***********************************
-
-temp = 
-
-file = open("Apple.txt","r")
 
 #********************************Output Box*************************************
 
