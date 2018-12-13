@@ -1,0 +1,30 @@
+import tkinter as tk
+
+root = tk.Tk()
+
+left_outer = Frame(root, bd=1)
+left_outer.pack(side=LEFT, fill=Y, pady=5, padx=5)
+right_outer = Frame(root, bd=1)
+right_outer.pack(side=LEFT, fill=Y, pady=5, padx=5)
+
+left = Frame(left_outer, bd=2, relief=SUNKEN)
+right = Frame(right_outer, bd=2, relief=SUNKEN)
+left.pack(fill=Y)
+right.pack(fill=Y)
+
+t_start = Text(left, width=20, height=200)
+t_start.pack(side=LEFT, fill=Y)
+s_start = Scrollbar(left)
+s_start.pack(side=RIGHT, fill=Y)
+s_start.config(command=t_start.yview)
+t_start.config(yscrollcommand=s_start.set)
+
+t_end = Text(right, width=20, height=200)
+t_end.pack(side=LEFT, fill=Y)
+s_end = Scrollbar(right)
+s_end.pack(side=RIGHT, fill=Y)
+s_end.config(command=t_end.yview)
+t_end.config(yscrollcommand=s_end.set)
+
+root.geometry("400x200")
+root.mainloop()
